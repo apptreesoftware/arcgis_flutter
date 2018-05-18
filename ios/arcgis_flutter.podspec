@@ -4,9 +4,9 @@
 Pod::Spec.new do |s|
   s.name             = 'arcgis_flutter'
   s.version          = '0.0.1'
-  s.summary          = 'An ArcGIS plugin for flutter'
+  s.summary          = 'A new Flutter project.'
   s.description      = <<-DESC
-An ArcGIS plugin for flutter
+A new Flutter project.
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }

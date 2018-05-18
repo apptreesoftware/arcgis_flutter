@@ -1,6 +1,6 @@
 # arcgis_flutter
 
-An ArcGIS plugin for flutter
+A new Flutter project.
 
 ## Getting Started
 
