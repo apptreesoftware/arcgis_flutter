@@ -15,28 +15,11 @@ class _MyAppState extends State<MyApp> {
   @override
   initState() {
     super.initState();
-    initPlatformState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
-  initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      platformVersion = await ArcgisFlutter.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted)
-      return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+  void _openMap() {
+    var options = new ArcgisMapOptions();
+    ArcgisFlutter.show(options);
   }
 
   @override
@@ -44,10 +27,13 @@ class _MyAppState extends State<MyApp> {
     return new MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text('Plugin example app'),
+          title: new Text('ArcGIS in flutter'),
         ),
         body: new Center(
-          child: new Text('Running on: $_platformVersion\n'),
+          child: new MaterialButton(
+            child: new Text("Tap to open"),
+            onPressed: _openMap,
+          ),
         ),
       ),
     );
