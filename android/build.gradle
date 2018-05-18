@@ -18,6 +18,7 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven{ url 'https://esri.bintray.com/arcgis' }
     }
 }
 
@@ -41,4 +42,8 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    /* TODO: remove google map dependency*/
+    compile 'com.google.android.gms:play-services-maps:11.+'
+    compile 'com.android.support:appcompat-v7:27.1.1'
+    compile 'com.esri.arcgisruntime:arcgis-android:100.1.0'
 }
