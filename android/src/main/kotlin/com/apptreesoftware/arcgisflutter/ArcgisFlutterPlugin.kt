@@ -127,9 +127,9 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
         result.success(zoom)
       }
       call.method == "getCenter" -> {
-        val center = mapActivity?.target ?: LatLng(0.0, 0.0)
-        result.success(mapOf("latitude" to center.latitude,
-                "longitude" to center.longitude))
+//        val center = mapActivity?.target ?: LatLng(0.0, 0.0)
+//        result.success(mapOf("latitude" to center.latitude,
+//                "longitude" to center.longitude))
       }
       call.method == "setCamera" -> {
         handleSetCamera(call.arguments as Map<String, Any>)

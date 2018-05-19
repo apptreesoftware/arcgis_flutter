@@ -45,5 +45,5 @@ dependencies {
     /* TODO: remove google map dependency*/
     compile 'com.google.android.gms:play-services-maps:11.+'
     compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.esri.arcgisruntime:arcgis-android:100.1.0'
+    compile 'com.esri.arcgisruntime:arcgis-android:100.2.1'
 }

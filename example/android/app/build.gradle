@@ -29,11 +29,24 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.apptreesoftware.arcgisflutterexample"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        ndk {
+            // Filtering out arm64-v8a, x86_64 and mips64
+            // Dart VM (not AOT compiled Dart code) does not run
+            // with 32 bit architectures… ESRI forces us to build for 32 bit
+            // architectures,
+            // Use:
+            // flutter build apk --release --target-platform android-arm
+            // to build for 32-bit arm architectures
+            //
+            // set abiFilters to package only 32-bit architectures:
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
     }
 
     buildTypes {
