@@ -1,6 +1,5 @@
 import 'dart:async';
 
-export 'camera_position.dart';
 export 'location.dart';
 export 'marker.dart';
 export 'toolbar_action.dart';
@@ -8,13 +7,16 @@ export 'map_view_type.dart';
 export 'camera_position.dart';
 export 'map_options.dart';
 export 'locations.dart';
+export 'map_layer.dart';
 
+import 'package:arcgis_flutter/utils.dart';
 import 'package:flutter/services.dart';
-import 'package:arcgis_flutter/camera_position.dart';
-import 'package:arcgis_flutter/location.dart';
-import 'package:arcgis_flutter/map_options.dart';
-import 'package:arcgis_flutter/marker.dart';
-import 'package:arcgis_flutter/toolbar_action.dart';
+import 'camera_position.dart';
+import 'location.dart';
+import 'map_options.dart';
+import 'marker.dart';
+import 'toolbar_action.dart';
+import 'map_layer.dart';
 
 class MapView {
   MethodChannel _channel = const MethodChannel("com.apptreesoftware.map_view");
@@ -89,18 +91,15 @@ class MapView {
     _channel.invokeMethod('removeAnnotation', marker.toMap());
   }
 
-  void zoomToFit({int padding: 50}) {
-    _channel.invokeMethod('zoomToFit', padding);
-  }
-
-  void zoomTo(List<String> annotationIds, {double padding: 50.0}) {
-    _channel.invokeMethod('zoomToAnnotations',
-        {"annotations": annotationIds, "padding": padding});
+  void setLayers(List<MapLayer> layers) {
+    _channel.invokeMethod('setLayers', {
+      'mapLayers': layers.map((l) => l.toJson()).toList(),
+    });
   }
 
   void setCameraPosition(double latitude, double longitude, double zoom) {
     _channel.invokeMethod("setCamera",
-        {"latitude": latitude, "longitude": longitude, "zoom": zoom});
+        {"latitude": latitude, "longitude": longitude, "zoom": leafletZoomToEsriZoom(zoom)});
   }
 
   Future<Location> get centerLocation async {
@@ -109,33 +108,18 @@ class MapView {
   }
 
   Future<double> get zoomLevel async {
-    return await _channel.invokeMethod("getZoomLevel");
+    var level = await _channel.invokeMethod("getZoomLevel");
+    return esriZoomToLeafletZoom(level);
   }
-
-  Future<List<Marker>> get visibleAnnotations async {
-    List<String> ids = await _channel.invokeMethod("getVisibleMarkers");
-    var annotations = <Marker>[];
-    for (var id in ids) {
-      var annotation = _annotations[id];
-      annotations.add(annotation);
-    }
-    return annotations;
-  }
-
-  Stream<Marker> get onTouchAnnotation => _annotationStreamController.stream;
 
   Stream<Location> get onLocationUpdated =>
       _locationChangeStreamController.stream;
-
-  Stream<Location> get onMapTapped => _mapInteractionStreamController.stream;
 
   Stream<CameraPosition> get onCameraChanged => _cameraStreamController.stream;
 
   Stream<int> get onToolbarAction => _toolbarActionStreamController.stream;
 
   Stream<dynamic> get onMapReady => _mapReadyStreamController.stream;
-
-  Stream<Marker> get onInfoWindowTapped => _infoWindowStreamController.stream;
 
   Future<dynamic> _handleMethod(MethodCall call) async {
     switch (call.method) {

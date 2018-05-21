@@ -3,6 +3,7 @@ package com.apptreesoftware.arcgisflutter
 import android.app.Activity
 import android.content.Intent
 import android.location.Location
+import com.esri.arcgisruntime.geometry.Point
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.maps.model.CameraPosition
@@ -13,6 +14,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
 import com.google.android.gms.maps.GoogleMap
+import org.json.JSONObject
 
 class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
   val mapTypeMapping: HashMap<String, Int> = hashMapOf(
@@ -62,34 +64,38 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
       return CameraPosition(LatLng(latitude, longitude), zoom.toFloat(), 0.0f, 0.0f)
     }
 
-    fun mapTapped(latLng: LatLng) {
-      this.channel.invokeMethod("mapTapped",
-              mapOf("latitude" to latLng.latitude,
-                      "longitude" to latLng.longitude))
+    fun getCurrentCameraPosition() {
+
     }
 
-    fun annotationTapped(id: String) {
-      this.channel.invokeMethod("annotationTapped", id)
-    }
+//    fun mapTapped(latLng: LatLng) {
+//      this.channel.invokeMethod("mapTapped",
+//              mapOf("latitude" to latLng.latitude,
+//                      "longitude" to latLng.longitude))
+//    }
+//
+//    fun annotationTapped(id: String) {
+//      this.channel.invokeMethod("annotationTapped", id)
+//    }
 
-    fun cameraPositionChanged(pos: CameraPosition) {
+    fun cameraPositionChanged(pos: Point) {
       this.channel.invokeMethod("cameraPositionChanged", mapOf(
-              "latitude" to pos.target.latitude,
-              "longitude" to pos.target.longitude,
-              "zoom" to pos.zoom
+              "latitude" to pos.y,
+              "longitude" to pos.x,
+              "zoom" to pos.z
       ))
     }
 
-    fun locationDidUpdate(loc: Location) {
-      this.channel.invokeMethod("locationUpdated", mapOf(
-              "latitude" to loc.latitude,
-              "longitude" to loc.longitude
-      ))
-    }
-
-    fun infoWindowTapped(id: String) {
-      this.channel.invokeMethod("infoWindowTapped", id)
-    }
+//    fun locationDidUpdate(loc: Location) {
+//      this.channel.invokeMethod("locationUpdated", mapOf(
+//              "latitude" to loc.latitude,
+//              "longitude" to loc.longitude
+//      ))
+//    }
+//
+//    fun infoWindowTapped(id: String) {
+//      this.channel.invokeMethod("infoWindowTapped", id)
+//    }
   }
 
   override fun onMethodCall(call: MethodCall, result: Result): Unit {
@@ -122,40 +128,30 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
         result.success(true)
         return
       }
+      call.method == "setLayers" -> {
+        setLayers(call.arguments as Map<String, Any>)
+        result.success(true)
+      }
       call.method == "getZoomLevel" -> {
-        val zoom = mapActivity?.zoomLevel ?: 0.0.toFloat()
+        val zoom = mapActivity?.zoom ?: 0.0.toFloat()
         result.success(zoom)
       }
       call.method == "getCenter" -> {
-//        val center = mapActivity?.target ?: LatLng(0.0, 0.0)
-//        result.success(mapOf("latitude" to center.latitude,
-//                "longitude" to center.longitude))
+        val center = mapActivity?.target ?: Point(0.0, 0.0)
+        result.success(mapOf("latitude" to center.y,
+                "longitude" to center.x))
       }
       call.method == "setCamera" -> {
         handleSetCamera(call.arguments as Map<String, Any>)
         result.success(true)
       }
-      call.method == "zoomToAnnotations" -> {
-        handleZoomToAnnotations(call.arguments as Map<String, Any>)
-        result.success(true)
-      }
-      call.method == "zoomToFit" -> {
-        mapActivity?.zoomToAnnotations(call.arguments as Int)
-        result.success(true)
-      }
-      call.method == "getVisibleMarkers" -> {
-        val visibleMarkerIds = mapActivity?.visibleMarkers ?: emptyList()
-        result.success(visibleMarkerIds)
-      }
+
       call.method == "setAnnotations" -> {
         handleSetAnnotations(call.arguments as List<Map<String, Any>>)
         result.success(true)
       }
       call.method == "addAnnotation" -> {
         handleAddAnnotation(call.arguments as Map<String, Any>)
-      }
-      call.method == "removeAnnotation" -> {
-        handleRemoveAnnotation(call.arguments as Map<String, Any>)
       }
       else -> result.notImplemented()
     }
@@ -168,11 +164,18 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
     mapActivity?.setCamera(LatLng(lat, lng), zoom.toFloat())
   }
 
-  fun handleZoomToAnnotations(map: Map<String, Any>) {
-    val ids = map["annotations"] as List<String>
-    val padding = map["padding"] as Double
-    mapActivity?.zoomTo(annoationIds = ids, padding = padding.toFloat())
+  fun setLayers(map: Map<String, Any>) {
+    var layers = map["mapLayers"] as List<Map<String, Any>>
+    var typedLayers = layers.map { MapLayer.fromMap(it) }
+    typedLayers = typedLayers.filterNotNull()
+    mapActivity?.setLayers(typedLayers)
   }
+
+//  fun handleZoomToAnnotations(map: Map<String, Any>) {
+//    val ids = map["annotations"] as List<String>
+//    val padding = map["padding"] as Double
+//    mapActivity?.zoomTo(annoationIds = ids, padding = padding.toFloat())
+//  }
 
   fun handleSetAnnotations(annotations: List<Map<String, Any>>) {
     val mapAnnoations = ArrayList<MapAnnotation>()
@@ -191,10 +194,10 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
     }
   }
 
-  fun handleRemoveAnnotation(map: Map<String, Any>) {
-    MapAnnotation.fromMap(map)?.let {
-      mapActivity?.removeMarker(it)
-    }
-  }
+//  fun handleRemoveAnnotation(map: Map<String, Any>) {
+//    MapAnnotation.fromMap(map)?.let {
+//      mapActivity?.removeMarker(it)
+//    }
+//  }
 }
 

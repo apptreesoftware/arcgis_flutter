@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:arcgis_flutter/map_view.dart';
@@ -8,10 +9,10 @@ import 'package:arcgis_flutter/map_view.dart';
 /// - Static Maps API
 /// - Android Maps API
 /// - iOS Maps API
-var API_KEY = "AIzaSyCzGs0MnqCcztKOIdxh8MEGDhUJflJ96Vo";
+var apiKey = "AIzaSyCzGs0MnqCcztKOIdxh8MEGDhUJflJ96Vo";
 
 void main() {
-  MapView.setApiKey(API_KEY);
+  MapView.setApiKey(apiKey);
   runApp(new MyApp());
 }
 
@@ -26,8 +27,7 @@ class _MyAppState extends State<MyApp> {
   var compositeSubscription = new CompositeSubscription();
 
   List<Marker> _markers = <Marker>[
-    new Marker("1", "Work", 45.523970, -122.663081, color: Colors.blue),
-    new Marker("2", "Nossa Familia Coffee", 45.528788, -122.684633),
+    new Marker("1", "USC", 34.0224, -118.2851, color: Colors.purple),
   ];
 
   @override
@@ -79,23 +79,14 @@ class _MyAppState extends State<MyApp> {
         toolbarActions: [new ToolbarAction("Close", 1)]);
 
     var sub = mapView.onMapReady.listen((_) {
+      mapView.setLayers(_mapLayers);
       mapView.setMarkers(_markers);
-      mapView.addMarker(new Marker("3", "10 Barrel", 45.5259467, -122.687747,
-          color: Colors.purple));
-      mapView.zoomToFit(padding: 100);
+      mapView.setCameraPosition(34.0224, -118.2851, 16.0);
     });
     compositeSubscription.add(sub);
 
     sub = mapView.onLocationUpdated
         .listen((location) => print("Location updated $location"));
-    compositeSubscription.add(sub);
-
-    sub = mapView.onTouchAnnotation
-        .listen((annotation) => print("annotation tapped"));
-    compositeSubscription.add(sub);
-
-    sub = mapView.onMapTapped
-        .listen((location) => print("Touched location $location"));
     compositeSubscription.add(sub);
 
     sub = mapView.onCameraChanged.listen((cameraPosition) =>
@@ -108,10 +99,6 @@ class _MyAppState extends State<MyApp> {
       }
     });
     compositeSubscription.add(sub);
-
-    sub = mapView.onInfoWindowTapped.listen((marker) {
-      print("Info Window Tapped for ${marker.title}");
-    });
     compositeSubscription.add(sub);
   }
 
@@ -125,6 +112,13 @@ class _MyAppState extends State<MyApp> {
 //    var uri = await staticMapProvider.getImageUriFromMap(mapView,
 //        width: 900, height: 400);
 //    setState(() => staticMapUri = uri);
+    var centerLocation = await mapView.centerLocation;
+    var zoomLevel = await mapView.zoomLevel;
+
+    setState(() {
+      cameraPosition = new CameraPosition(centerLocation, zoomLevel);
+    });
+
     mapView.dismiss();
     compositeSubscription.cancel();
   }
@@ -160,3 +154,79 @@ class CompositeSubscription {
     return this._subscriptions.toList();
   }
 }
+
+List<MapLayer> get _mapLayers => (json.decode(r"""
+{
+    "mapLayers": [{
+            "name": "Ramps",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Accessibility/Accessibility/MapServer/9",
+            "visible_by_default": true
+        },
+        {
+            "name": "Building Entrances",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Accessibility/Accessibility/MapServer/3",
+            "visible_by_default": false
+        },
+        {
+            "name": "Elevators",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Accessibility/Accessibility/MapServer/2",
+            "visible_by_default": false
+        },
+        {
+            "name": "Accessible Parking",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Accessibility/Accessibility/MapServer/6",
+            "visible_by_default": false
+        },
+        {
+            "name": "Curb Access",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Accessibility/Accessibility/MapServer/10",
+            "visible_by_default": true
+        },
+        {
+            "name": "Buildings",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Accessibility/Accessibility/MapServer/11",
+            "visible_by_default": false
+        },
+        {
+            "name": "Sculptures",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/11",
+            "visible_by_default": false
+        },
+        {
+            "name": "Benches",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/12",
+            "visible_by_default": false
+        },
+        {
+            "name": "Courtyards",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/14",
+            "visible_by_default": false
+        },
+        {
+            "name": "Fences",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/18",
+            "visible_by_default": false
+        },
+        {
+            "name": "Fountains",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/19",
+            "visible_by_default": false
+        },
+        {
+            "name": "Flowerbeds",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/25",
+            "visible_by_default": false
+        },
+        {
+            "name": "Planters",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/26",
+            "visible_by_default": false
+        },
+        {
+            "name": "Shrubs",
+            "url": "http://fmsmaps3.usc.edu:6080/arcgis/rest/services/Basemap/BasemapUPCColor4NAD83/MapServer/34",
+            "visible_by_default": false
+        }
+    ]
+}
+""")['mapLayers'] as List).map((json) => new MapLayer.fromJson(json)).toList();
