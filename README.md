@@ -1,6 +1,10 @@
 # arcgis_flutter
 
-A new Flutter project.
+EXPERIMENTAL
+
+flutter plugin for opening an ArcGIS activity.
+
+Android only.
 
 ## Getting Started
 
