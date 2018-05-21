@@ -24,8 +24,6 @@ class _MyAppState extends State<MyApp> {
   MapView mapView = new MapView();
   CameraPosition cameraPosition;
   var compositeSubscription = new CompositeSubscription();
-  var staticMapProvider = new StaticMapProvider(API_KEY);
-  Uri staticMapUri;
 
   List<Marker> _markers = <Marker>[
     new Marker("1", "Work", 45.523970, -122.663081, color: Colors.blue),
@@ -36,8 +34,6 @@ class _MyAppState extends State<MyApp> {
   initState() {
     super.initState();
     cameraPosition = new CameraPosition(Locations.portland, 2.0);
-    staticMapUri = staticMapProvider.getStaticUri(Locations.portland, 12,
-        width: 900, height: 400, mapType: StaticMapViewType.roadmap);
   }
 
   @override
@@ -47,48 +43,27 @@ class _MyAppState extends State<MyApp> {
           appBar: new AppBar(
             title: new Text('Map View Example'),
           ),
-          body: new Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              new Container(
-                height: 250.0,
-                child: new Stack(
-                  children: <Widget>[
-                    new Center(
-                        child: new Container(
-                          child: new Text(
-                            "You are supposed to see a map here.\n\nAPI Key is not valid.\n\n"
-                                "To view maps in the example application set the "
-                                "API_KEY variable in example/lib/main.dart. "
-                                "\n\nIf you have set an API Key but you still see this text "
-                                "make sure you have enabled all of the correct APIs "
-                                "in the Google API Console. See README for more detail.",
-                            textAlign: TextAlign.center,
-                          ),
-                          padding: const EdgeInsets.all(20.0),
-                        )),
-                    new InkWell(
-                      child: new Center(
-                        child: new Image.network(staticMapUri.toString()),
-                      ),
-                      onTap: showMap,
-                    )
-                  ],
+          body: new Center(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                new Container(
+                    child: new MaterialButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  child: new Text("Show the arcGIS map"),
+                  onPressed: showMap,
+                )),
+                new Container(
+                  padding: new EdgeInsets.only(top: 25.0),
+                  child: new Text("Camera Position: \nLat: "
+                      "${cameraPosition.center.latitude}\n"
+                      "Lng:${cameraPosition.center.longitude}\n"
+                      "Zoom: ${cameraPosition.zoom}\n"),
                 ),
-              ),
-              new Container(
-                padding: new EdgeInsets.only(top: 10.0),
-                child: new Text(
-                  "Tap the map to interact",
-                  style: new TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-              new Container(
-                padding: new EdgeInsets.only(top: 25.0),
-                child: new Text(
-                    "Camera Position: \n\nLat: ${cameraPosition.center.latitude}\n\nLng:${cameraPosition.center.longitude}\n\nZoom: ${cameraPosition.zoom}"),
-              ),
-            ],
+              ],
+            ),
           )),
     );
   }
@@ -141,15 +116,15 @@ class _MyAppState extends State<MyApp> {
   }
 
   _handleDismiss() async {
-    double zoomLevel = await mapView.zoomLevel;
-    Location centerLocation = await mapView.centerLocation;
-    List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
-    print("Zoom Level: $zoomLevel");
-    print("Center: $centerLocation");
-    print("Visible Annotation Count: ${visibleAnnotations.length}");
-    var uri = await staticMapProvider.getImageUriFromMap(mapView,
-        width: 900, height: 400);
-    setState(() => staticMapUri = uri);
+//    double zoomLevel = await mapView.zoomLevel;
+//    Location centerLocation = await mapView.centerLocation;
+//    List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
+//    print("Zoom Level: $zoomLevel");
+//    print("Center: $centerLocation");
+//    print("Visible Annotation Count: ${visibleAnnotations.length}");
+//    var uri = await staticMapProvider.getImageUriFromMap(mapView,
+//        width: 900, height: 400);
+//    setState(() => staticMapUri = uri);
     mapView.dismiss();
     compositeSubscription.cancel();
   }

@@ -3,7 +3,6 @@ import 'dart:async';
 export 'camera_position.dart';
 export 'location.dart';
 export 'marker.dart';
-export 'static_map_provider.dart';
 export 'toolbar_action.dart';
 export 'map_view_type.dart';
 export 'camera_position.dart';
