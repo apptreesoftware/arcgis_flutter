@@ -1,7 +1,6 @@
 package com.apptreesoftware.arcgisflutter
 
 import android.graphics.Color
-import com.google.android.gms.maps.model.LatLng
 
 open class MapAnnotation(val identifier: String, val title: String, val coordinate: LatLng,
                          val color: Int) {
@@ -42,4 +41,8 @@ fun colorFromMap(map: Map<String, Int>): Int {
     val b = map["b"] ?: 0
     val a = map["a"] ?: 0
     return Color.argb(a, r, g, b)
+}
+
+class LatLng(val latitude: Double, val longitude: Double) {
+
 }

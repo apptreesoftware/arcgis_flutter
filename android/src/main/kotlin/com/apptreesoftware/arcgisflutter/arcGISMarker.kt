@@ -7,7 +7,6 @@ import com.esri.arcgisruntime.mapping.view.Graphic
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay
 import com.esri.arcgisruntime.symbology.MarkerSymbol
 import com.esri.arcgisruntime.symbology.PictureMarkerSymbol
-import com.google.android.gms.maps.model.LatLng
 
 class ArcGISMarker(location: LatLng, val recordID: String, val context: Context,
                    val overlay: GraphicsOverlay) {

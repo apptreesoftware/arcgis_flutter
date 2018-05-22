@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import com.esri.arcgisruntime.geometry.Geometry
 import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
@@ -14,7 +13,7 @@ import com.esri.arcgisruntime.mapping.Basemap
     import com.esri.arcgisruntime.mapping.Viewpoint
 import com.esri.arcgisruntime.mapping.view.GraphicsOverlay
 import com.esri.arcgisruntime.mapping.view.MapView
-import com.google.android.gms.maps.model.LatLng
+
 
 class MapActivity : AppCompatActivity(), LayersDialogFragment.LayersDialogListener {
 
@@ -79,27 +78,18 @@ class MapActivity : AppCompatActivity(), LayersDialogFragment.LayersDialogListen
             val viewPoint = mapView.getCurrentViewpoint(Viewpoint.Type.CENTER_AND_SCALE)
             val center = viewPoint.targetGeometry.extent.center
             return GeometryEngine.project(center, SpatialReferences.getWgs84()) as Point
-//            val mercator = SpatialReferences.getWebMercator()
-//            mercator.
-//            val scale = mapView.mapScale
-//            val center = mapView.map
-//            val viewpoint = mapView.getCurrentViewpoint(Viewpoint.Type.CENTER_AND_SCALE)
-//            return viewpoint.
         }
     val zoom: Float
         get() {
             val viewpoint = mapView.mapScale;
             return viewpoint.toFloat()
-//            return mapView.getCurrentViewpoint(Viewpoint.Type.CENTER_AND_SCALE).targetGeometry.
-//            viewpoint.targetScale
-//            return GeometryEngine.
-//            return viewpoint.targetScale.toFloat()
         }
 
 
     fun setCamera(target: LatLng, zoom: Float) {
         mapView.setViewpoint(Viewpoint(target.latitude, target.longitude, zoom.toDouble()))
     }
+
 
     fun setAnnotations(annotations: List<MapAnnotation>) {
         markers.clear()
