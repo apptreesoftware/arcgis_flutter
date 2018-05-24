@@ -106,14 +106,6 @@ class MapActivity : AppCompatActivity(), LayersDialogFragment.LayersDialogListen
         marker.updateMarker()
     }
 
-
-
-//    override fun onLocationChanged(p0: LocationDisplay.LocationChangedEvent?) {
-//      val pos = mapView.locationDisplay.mapLocation
-//      ArcgisFlutterPlugin.cameraPositionChanged(pos)
-//    }
-
-
     fun setLayers(layers: List<MapLayer>) {
         this.layers = ArrayList(layers)
     }

@@ -19,7 +19,8 @@ import 'toolbar_action.dart';
 import 'map_layer.dart';
 
 class MapView {
-  MethodChannel _channel = const MethodChannel("com.apptreesoftware.map_view");
+  static MethodChannel _channel =
+      const MethodChannel("com.apptreesoftware.arcgis_flutter_plugin");
   StreamController<Marker> _annotationStreamController =
       new StreamController.broadcast();
   StreamController<Location> _locationChangeStreamController =
@@ -44,8 +45,7 @@ class MapView {
   static bool _apiKeySet = false;
 
   static void setApiKey(String apiKey) {
-    MethodChannel c = const MethodChannel("com.apptreesoftware.map_view");
-    c.invokeMethod('setApiKey', apiKey);
+    _channel.invokeMethod('setApiKey', apiKey);
     _apiKeySet = true;
   }
 
@@ -98,8 +98,11 @@ class MapView {
   }
 
   void setCameraPosition(double latitude, double longitude, double zoom) {
-    _channel.invokeMethod("setCamera",
-        {"latitude": latitude, "longitude": longitude, "zoom": leafletZoomToEsriZoom(zoom)});
+    _channel.invokeMethod("setCamera", {
+      "latitude": latitude,
+      "longitude": longitude,
+      "zoom": leafletZoomToEsriZoom(zoom)
+    });
   }
 
   Future<Location> get centerLocation async {

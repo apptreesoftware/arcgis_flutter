@@ -20,7 +20,7 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
 
     @JvmStatic
     fun registerWith(registrar: Registrar): Unit {
-      channel = MethodChannel(registrar.messenger(), "com.apptreesoftware.map_view")
+      channel = MethodChannel(registrar.messenger(), "com.apptreesoftware.arcgis_flutter_plugin")
       val plugin = ArcgisFlutterPlugin(activity = registrar.activity())
       channel.setMethodCallHandler(plugin)
     }
