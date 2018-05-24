@@ -107,11 +107,17 @@ class MapView {
 
   Future<Location> get centerLocation async {
     Map locationMap = await _channel.invokeMethod("getCenter");
+    if (locationMap == null) {
+      return null;
+    }
     return new Location(locationMap["latitude"], locationMap["longitude"]);
   }
 
   Future<double> get zoomLevel async {
     var level = await _channel.invokeMethod("getZoomLevel");
+    if (level == null) {
+      return null;
+    }
     return esriZoomToLeafletZoom(level);
   }
 

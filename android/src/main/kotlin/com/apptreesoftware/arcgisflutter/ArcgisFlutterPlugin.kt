@@ -15,7 +15,6 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
     lateinit var channel: MethodChannel
     var toolbarActions: List<ToolbarAction> = emptyList()
     var showUserLocation: Boolean = false
-    var mapTitle: String = ""
     var mapActivity: MapActivity? = null
 
     @JvmStatic
@@ -47,10 +46,8 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
       call.method == "setApiKey" -> result.success(false)
       call.method == "show" -> {
         val mapOptions = call.argument<Map<String, Any>>("mapOptions")
-        val cameraDict = mapOptions["cameraPosition"] as Map<String, Any>
         toolbarActions = getToolbarActions(call.argument<List<Map<String, Any>>>("actions"))
         showUserLocation = mapOptions["showUserLocation"] as Boolean
-        mapTitle = mapOptions["title"] as String
 
         val intent = Intent(activity, MapActivity::class.java)
         activity.startActivity(intent)
