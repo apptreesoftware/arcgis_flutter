@@ -28,7 +28,6 @@ class MapActivity : AppCompatActivity(), LayersDialogFragment.LayersDialogListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        title = ArcgisFlutterPlugin.mapTitle
 
         mapView = findViewById(R.id.mapView)
         mapView.graphicsOverlays.add(overlay)
