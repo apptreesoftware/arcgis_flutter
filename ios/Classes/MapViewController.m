@@ -2,7 +2,7 @@
 #import "ArcgisFlutterPlugin.h"
 #import <ArcGIS/ArcGIS.h>
 #import "MapAnnotation.h"
-
+#import "MapLayer.h"
 
 @interface MapViewController ()
 
@@ -14,6 +14,7 @@
 @property (nonatomic, retain) AGSMap *map;
 @property (nonatomic, retain) AGSGraphicsOverlay *graphicsOverlay;
 @property (nonatomic, assign) int mapViewType;
+@property (nonatomic, retain) NSArray<MapLayer *> *mapLayers;
 @end
 
 @implementation MapViewController
@@ -75,6 +76,10 @@
 
 - (float) zoomLevel {
     return [self.mapView mapScale];
+}
+
+- (void)setLayers:(NSArray<MapLayer *> *)mapLayers {
+    self.mapLayers = mapLayers;
 }
 
 @end

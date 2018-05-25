@@ -2,6 +2,7 @@
 #import "MapViewController.h"
 #import <ArcGIS/ArcGIS.h>
 #import "MapAnnotation.h"
+#import "MapLayer.h"
 
 @implementation ArcgisFlutterPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -50,13 +51,13 @@
     } else if ([@"setCamera" isEqualToString:call.method]) {
         [self handleSetCamera:call.arguments];
         result(@YES);
-    
     } else if ([@"getCenter" isEqualToString:call.method]) {
         CLLocationCoordinate2D location = [self.mapViewController centerLocation];
         result(@{@"latitude": @(location.latitude), @"longitude": @(location.longitude)});
     } else if ([@"getZoomLevel" isEqualToString:call.method]) {
         result(@([self.mapViewController zoomLevel]));
     } else if ([@"setLayers" isEqualToString:call.method]) {
+        [self handleAddLayers:call.arguments];
         result(@YES);
         
     } else {
@@ -108,6 +109,16 @@
 
 - (void)handleToolbar:(UIBarButtonItem *)item {
     [self.channel invokeMethod:@"onToolbarAction" arguments:@(item.tag)];
+}
+
+- (void)handleAddLayers:(NSDictionary *)dict {
+    NSMutableArray *typedLayers = [[NSMutableArray alloc] init];
+    NSArray *rawLayers = (NSArray *)[dict objectForKey:@"mapLayers"];
+    for (int i = 0; i < [rawLayers count];i++) {
+        MapLayer *layer = [[MapLayer alloc] initWithDictionary:rawLayers[i]];
+        [typedLayers addObject:layer];
+    }
+    [self.mapViewController setLayers:typedLayers];
 }
 
 @end

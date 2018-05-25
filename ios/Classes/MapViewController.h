@@ -2,6 +2,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <ArcGIS/ArcGIS.h>
 #import "MapAnnotation.h"
+#import "MapLayer.h"
 
 @class ArcgisFlutterPlugin;
 
@@ -15,5 +16,6 @@
 - (void)updateAnnotations:(NSArray *)annotations;
 - (CLLocationCoordinate2D) centerLocation;
 - (float) zoomLevel;
+- (void)setLayers:(NSArray<MapLayer *> *)mapLayers;
 
 @end
