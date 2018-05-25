@@ -41,26 +41,21 @@
             [self.host dismissViewControllerAnimated:true completion:nil];
         }
         self.mapViewController = nil;
-    } else if ([@"addAnnotation" isEqualToString:call.method]) {
-            [self handleSetAnnotations:call.arguments];
-            result(@YES);
+    } else if ([@"setAnnotations" isEqualToString:call.method]) {
+        [self handleSetAnnotations:call.arguments];
+        result(@YES);
     } else if ([@"addAnnotation" isEqualToString:call.method]) {
         [self handleAddAnnotation:call.arguments];
-        result(@YES);
-    } else if ([@"removeAnnotation" isEqualToString:call.method]) {
-//        [self handleRemoveAnnotation:call.arguments];
         result(@YES);
     } else if ([@"setCamera" isEqualToString:call.method]) {
         [self handleSetCamera:call.arguments];
         result(@YES);
     
     } else if ([@"getCenter" isEqualToString:call.method]) {
-//        CLLocationCoordinate2D location = self.mapViewController.centerLocation;
-//        result(@{@"latitude": @(location.latitude), @"longitude": @(location.longitude)});
-        result(@{});
+        CLLocationCoordinate2D location = [self.mapViewController centerLocation];
+        result(@{@"latitude": @(location.latitude), @"longitude": @(location.longitude)});
     } else if ([@"getZoomLevel" isEqualToString:call.method]) {
-//        result(@(self.mapViewController.zoomLevel));
-        result(@12.0);
+        result(@([self.mapViewController zoomLevel]));
     } else if ([@"setLayers" isEqualToString:call.method]) {
         result(@YES);
         

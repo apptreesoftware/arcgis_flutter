@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="800c82b6-bdb1-441f-9a0a-78a221ae28fd" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/ios/Classes/MapAnnotation.h" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/ios/Classes/MapViewController.m" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/com/apptreesoftware/arcgisflutter/ArcgisFlutterPlugin.kt" afterPath="$PROJECT_DIR$/android/src/main/kotlin/com/apptreesoftware/arcgisflutter/ArcgisFlutterPlugin.kt" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Podfile" afterPath="$PROJECT_DIR$/example/ios/Podfile" />
       <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/contents.xcworkspacedata" afterPath="$PROJECT_DIR$/example/ios/Runner.xcworkspace/contents.xcworkspacedata" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/ArcgisFlutterPlugin.h" afterPath="$PROJECT_DIR$/ios/Classes/ArcgisFlutterPlugin.h" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" afterPath="$PROJECT_DIR$/example/lib/main.dart" />
       <change beforePath="$PROJECT_DIR$/ios/Classes/ArcgisFlutterPlugin.m" afterPath="$PROJECT_DIR$/ios/Classes/ArcgisFlutterPlugin.m" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/MapViewController.h" afterPath="$PROJECT_DIR$/ios/Classes/MapViewController.h" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/MapViewController.m" afterPath="$PROJECT_DIR$/ios/Classes/MapViewController.m" />
       <change beforePath="$PROJECT_DIR$/ios/arcgis_flutter.podspec" afterPath="$PROJECT_DIR$/ios/arcgis_flutter.podspec" />
-      <change beforePath="$PROJECT_DIR$/lib/map_view.dart" afterPath="$PROJECT_DIR$/lib/map_view.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,18 +31,27 @@
     <expand />
     <select />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="83" column="53" lean-forward="false" selection-start-line="83" selection-start-column="53" selection-end-line="83" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>streamsubscription</find>
-      <find>mapviewplugin</find>
-      <find>MapViewPlugin</find>
-      <find>finish</find>
       <find>support</find>
       <find>AppCompat</find>
       <find>you are</find>
       <find>onmapready</find>
       <find>ZOOMIES</find>
-      <find>zoom</find>
       <find>8.0</find>
       <find>showMap</find>
       <find>showmap</find>
@@ -65,6 +72,11 @@
       <find>onToolbarAction</find>
       <find>getZoom</find>
       <find>getzoom</find>
+      <find>com.apptreesoftware.arcgis_flutter_plugin</find>
+      <find>arcgis</find>
+      <find>setannotations</find>
+      <find>center</find>
+      <find>zoom</find>
     </findStrings>
     <replaceStrings>
       <replace>ArcgisFlutterPlugin</replace>
@@ -96,11 +108,13 @@
         <option value="$PROJECT_DIR$/example/android/app/build.gradle" />
         <option value="$PROJECT_DIR$/lib/map_layer.dart" />
         <option value="$PROJECT_DIR$/lib/utils.dart" />
-        <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/android/src/main/kotlin/com/apptreesoftware/arcgisflutter/MapActivity.kt" />
         <option value="$PROJECT_DIR$/lib/map_view.dart" />
+        <option value="$PROJECT_DIR$/ios/arcgis_flutter.podspec" />
+        <option value="$PROJECT_DIR$/example/ios/Podfile" />
+        <option value="$PROJECT_DIR$/example/lib/main.dart" />
       </list>
     </option>
   </component>
@@ -110,11 +124,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1203" />
-    <option name="y" value="22" />
-    <option name="width" value="1280" />
-    <option name="height" value="1363" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="477" />
+    <option name="y" value="1462" />
+    <option name="width" value="1680" />
+    <option name="height" value="974" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -131,8 +145,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -148,19 +160,15 @@
             <path>
               <item name="arcgis_flutter" type="b2602c69:ProjectViewProjectNode" />
               <item name="arcgis_flutter" type="462c0819:PsiDirectoryNode" />
-              <item name="ios" type="462c0819:PsiDirectoryNode" />
-              <item name="Classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="arcgis_flutter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="arcgis_flutter" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,43 +317,45 @@
       <workItem from="1526697887812" duration="11000" />
       <workItem from="1526916705074" duration="7032000" />
       <workItem from="1526927302579" duration="14683000" />
-      <workItem from="1527179155470" duration="13790000" />
+      <workItem from="1527179155470" duration="13975000" />
+      <workItem from="1527267346950" duration="5931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42719000" />
+    <option name="totallyTimeSpent" value="48835000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1203" y="22" width="1280" height="1363" extended-state="0" />
+    <frame x="477" y="1462" width="1680" height="974" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886437" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886437" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886437" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49488056" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33201894" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15323566" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19951534" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22637014" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886437" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30362776" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3026166" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25030527" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25040388" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886437" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -357,18 +367,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/map_view.dart</url>
-          <line>117</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/map_view.dart</url>
-          <line>109</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
@@ -383,21 +381,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/com/apptreesoftware/arcgisflutter/MapActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="43" lean-forward="false" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/arcgis_flutter.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/camera_position.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/cluster.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -491,13 +474,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/build/arcgis_flutter/tmp/kotlin-classes/debug/com/apptreesoftware/arcgisflutter/MapActivity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/example/build/arcgis_flutter/tmp/kotlin-classes/debug/com/apptreesoftware/arcgisflutter/MapActivity.class" />
     <entry file="file://$PROJECT_DIR$/example/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
@@ -655,7 +632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,19 +643,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/map_layer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/android/src/main/kotlin/com/apptreesoftware/arcgisflutter/MapActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
           <caret line="88" column="29" lean-forward="false" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -695,7 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -717,24 +683,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/utils.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="26" column="7" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        <state relative-caret-position="130">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/ios/Podfile.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/arcgis_flutter.podspec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/ios/Podfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="26" column="3" lean-forward="true" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/map_layer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/map_view.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+        <state relative-caret-position="223">
+          <caret line="99" column="23" lean-forward="false" selection-start-line="99" selection-start-column="23" selection-end-line="99" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="92" column="24" lean-forward="false" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+        <state relative-caret-position="508">
+          <caret line="83" column="53" lean-forward="false" selection-start-line="83" selection-start-column="53" selection-end-line="83" selection-end-column="53" />
           <folding />
         </state>
       </provider>

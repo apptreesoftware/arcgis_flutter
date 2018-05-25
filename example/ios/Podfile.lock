@@ -1,0 +1,29 @@
+PODS:
+  - ArcGIS-Runtime-SDK-iOS (100.2.1)
+  - arcgis_flutter (0.0.1):
+    - ArcGIS-Runtime-SDK-iOS (= 100.2.1)
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - arcgis_flutter (from `Pods/.symlinks/plugins/arcgis_flutter/ios`)
+  - Flutter (from `Pods/.symlinks/flutter/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ArcGIS-Runtime-SDK-iOS
+
+EXTERNAL SOURCES:
+  arcgis_flutter:
+    :path: Pods/.symlinks/plugins/arcgis_flutter/ios
+  Flutter:
+    :path: Pods/.symlinks/flutter/ios
+
+SPEC CHECKSUMS:
+  ArcGIS-Runtime-SDK-iOS: 5259f90133e72ba6b06d5a7dc60cb75dda0e970a
+  arcgis_flutter: 8f571b3bea4f49186b6d4600086909eb792b4b95
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+
+PODFILE CHECKSUM: 2625e426c2d87c6d4fba226c34720c20ea3ccbb3
+
+COCOAPODS: 1.5.3

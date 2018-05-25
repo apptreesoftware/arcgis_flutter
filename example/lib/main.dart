@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
     var sub = mapView.onMapReady.listen((_) {
       mapView.setLayers(_mapLayers);
       mapView.setMarkers(_markers);
-      mapView.setCameraPosition(34.0224, -118.2851, 16.0);
+      mapView.setCameraPosition(34.0224, -118.2851, 9.0);
     });
     compositeSubscription.add(sub);
 
@@ -103,15 +103,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   _handleDismiss() async {
-//    double zoomLevel = await mapView.zoomLevel;
-//    Location centerLocation = await mapView.centerLocation;
-//    List<Marker> visibleAnnotations = await mapView.visibleAnnotations;
-//    print("Zoom Level: $zoomLevel");
-//    print("Center: $centerLocation");
-//    print("Visible Annotation Count: ${visibleAnnotations.length}");
-//    var uri = await staticMapProvider.getImageUriFromMap(mapView,
-//        width: 900, height: 400);
-//    setState(() => staticMapUri = uri);
     var centerLocation = await mapView.centerLocation;
     var zoomLevel = await mapView.zoomLevel;
 

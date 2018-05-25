@@ -5,7 +5,7 @@
 
 @class ArcgisFlutterPlugin;
 
-@interface MapViewController : UIViewController <AGSWebMapDelegate>
+@interface MapViewController : UIViewController
 
 - (id)initWithPlugin:(ArcgisFlutterPlugin *)plugin
      navigationItems:(NSArray *)items;
@@ -13,5 +13,7 @@
 - (void)setCamera:(CLLocationCoordinate2D)location zoom:(float)zoom;
 - (void)addAnnotation:(MapAnnotation *)annotation;
 - (void)updateAnnotations:(NSArray *)annotations;
+- (CLLocationCoordinate2D) centerLocation;
+- (float) zoomLevel;
 
 @end
