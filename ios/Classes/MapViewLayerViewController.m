@@ -18,8 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,10 +52,5 @@
     [self.delegate mapViewLayerDidComplete:self.mapLayers];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (void)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 @end
