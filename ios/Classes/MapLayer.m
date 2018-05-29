@@ -10,7 +10,7 @@
     if (self) {
         self.name = dictionary[@"name"];
         self.url = dictionary[@"url"];
-//        self.visible = (Boolean) dictionary[@"visible"];
+        self.visible = [dictionary[@"visible"] boolValue];
     }
     return self;
 }

@@ -4,15 +4,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:arcgis_flutter/map_view.dart';
 
-///This API Key will be used for both the interactive maps as well as the static maps.
-///Make sure that you have enabled the following APIs in the Google API Console (https://console.developers.google.com/apis)
-/// - Static Maps API
-/// - Android Maps API
-/// - iOS Maps API
-var apiKey = "AIzaSyCzGs0MnqCcztKOIdxh8MEGDhUJflJ96Vo";
-
 void main() {
-  MapView.setApiKey(apiKey);
+  MapView.setApiKey("");
   runApp(new MyApp());
 }
 
@@ -48,6 +41,7 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                new Image.asset("assets/pin_green.png"),
                 new Container(
                     child: new MaterialButton(
                   color: Colors.blue,
@@ -73,15 +67,13 @@ class _MyAppState extends State<MyApp> {
         new MapOptions(
             mapViewType: MapViewType.normal,
             showUserLocation: true,
-            initialCameraPosition: new CameraPosition(
-                new Location(45.5235258, -122.6732493), 14.0),
             title: "Recently Visited"),
         toolbarActions: [new ToolbarAction("Close", 1)]);
 
     var sub = mapView.onMapReady.listen((_) {
       mapView.setLayers(_mapLayers);
       mapView.setMarkers(_markers);
-      mapView.setCameraPosition(34.0224, -118.2851, 9.0);
+      mapView.setCameraPosition(34.0224, -118.2851, 15.0);
     });
     compositeSubscription.add(sub);
 

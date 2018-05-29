@@ -42,8 +42,13 @@
 
 - (void)loadView {
     self.mapView = [[AGSMapView alloc] init];
-    
     self.view = self.mapView;
+    UIButton *layerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [layerButton setTitle:@"Layers" forState:UIControlStateNormal];
+    [layerButton setTitleColor:[UIColor colorWithWhite:0 alpha:1.0] forState:UIControlStateNormal];
+    [layerButton sizeToFit];
+    [layerButton addTarget:self action:@selector(showLayers:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:layerButton];
     [self.plugin onMapReady];
 }
 
@@ -54,6 +59,14 @@
     [self.mapView setViewpoint:viewPoint];
 }
 
+- (void)showLayers:(id)sender {
+    MapViewLayerViewController *layerController = [[MapViewLayerViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:layerController];
+    layerController.delegate = self;
+    layerController.mapLayers = self.mapLayers;
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
+}
+
 - (void)updateAnnotations:(NSArray *)annotations {
     for (MapAnnotation *annotation in annotations) {
         [self addAnnotation:annotation];
@@ -61,7 +74,8 @@
 }
 
 - (void)addAnnotation:(MapAnnotation *)annotation {
-    AGSSimpleMarkerSymbol *symbol = [[AGSSimpleMarkerSymbol alloc] initWithStyle:AGSSimpleMarkerSymbolStyleCircle color:annotation.color size:8.0f];
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.plugin.redImageKey ofType:nil];
+    AGSMarkerSymbol *symbol = [[AGSPictureMarkerSymbol alloc] initWithImage:[UIImage imageWithContentsOfFile:path]];
     AGSPoint *point = AGSPointMakeWGS84(annotation.coordinate.latitude, annotation.coordinate.longitude);
     AGSGraphic *graphic = [[AGSGraphic alloc] initWithGeometry:point symbol:symbol attributes:nil];
     [self.graphicsOverlay.graphics addObject:graphic];
@@ -80,6 +94,25 @@
 
 - (void)setLayers:(NSArray<MapLayer *> *)mapLayers {
     self.mapLayers = mapLayers;
+}
+
+- (void)mapViewLayerDidComplete:(NSArray *)layers {
+    [self.mapView.map.operationalLayers removeAllObjects];
+    for (int i = 0; i < layers.count; i++) {
+        MapLayer *layer = layers[i];
+        if (!layer.visible) {
+            continue;
+        }
+        NSURL *url = [[NSURL alloc] initWithString:layer.url];
+        AGSServiceFeatureTable *sft = [[AGSServiceFeatureTable alloc] initWithURL:url];
+        AGSFeatureLayer *featureLayer = [[AGSFeatureLayer alloc] initWithFeatureTable:sft];
+        [self.mapView.map.operationalLayers addObject:featureLayer];
+//        [newLayers addObject:featureLayer];
+    }
+    NSLog(@"operationalLayers = %@", self.mapView.map.operationalLayers);
+    
+//    self.mapview.map.operationalLayers = newLayers;
+    NSLog(@"Done");
 }
 
 @end

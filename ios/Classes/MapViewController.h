@@ -3,10 +3,11 @@
 #import <ArcGIS/ArcGIS.h>
 #import "MapAnnotation.h"
 #import "MapLayer.h"
+#import "MapViewLayerViewController.h"
 
 @class ArcgisFlutterPlugin;
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController<MapViewLayerDelegate>
 
 - (id)initWithPlugin:(ArcgisFlutterPlugin *)plugin
      navigationItems:(NSArray *)items;

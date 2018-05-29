@@ -10,14 +10,15 @@
       methodChannelWithName:@"com.apptreesoftware.arcgis_flutter_plugin"
             binaryMessenger:[registrar messenger]];
     UIViewController *host = UIApplication.sharedApplication.delegate.window.rootViewController;
-    ArcgisFlutterPlugin* instance = [[ArcgisFlutterPlugin alloc] initWithHost:host channel:channel];
-  [registrar addMethodCallDelegate:instance channel:channel];
+    ArcgisFlutterPlugin* instance = [[ArcgisFlutterPlugin alloc] initWithHost:host channel:channel registrar:registrar];
+    [registrar addMethodCallDelegate:instance channel:channel];
 }
 
-- (id)initWithHost:(UIViewController *)host channel:(FlutterMethodChannel *)channel {
+- (id)initWithHost:(UIViewController *)host channel:(FlutterMethodChannel *)channel registrar:(NSObject<FlutterPluginRegistrar>*)registar {
     if (self = [super init]) {
         self.host = host;
         self.channel = channel;
+        self.redImageKey = [registar lookupKeyForAsset:@"packages/arcgis_flutter/lib/assets/pin_red.png"];
     }
     return self;
 }
