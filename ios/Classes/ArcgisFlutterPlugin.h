@@ -7,6 +7,7 @@
 @property (nonatomic, assign) FlutterMethodChannel *channel;
 @property (nonatomic, retain) MapViewController *mapViewController;
 @property (nonatomic, retain) NSString *redImageKey;
+@property (nonatomic, retain) NSString *layerImageKey;
 
 - (void)onMapReady;
 

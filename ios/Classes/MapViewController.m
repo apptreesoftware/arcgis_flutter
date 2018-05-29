@@ -44,9 +44,10 @@
     self.mapView = [[AGSMapView alloc] init];
     self.view = self.mapView;
     UIButton *layerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [layerButton setTitle:@"Layers" forState:UIControlStateNormal];
-    [layerButton setTitleColor:[UIColor colorWithWhite:0 alpha:1.0] forState:UIControlStateNormal];
-    [layerButton sizeToFit];
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.plugin.layerImageKey ofType:nil];
+    [layerButton setImage:[UIImage imageWithContentsOfFile:path] forState:UIControlStateNormal];
+    [layerButton setFrame:CGRectMake(0.0, 0.0, 36.0, 36.0)];
+    [layerButton setContentMode:UIViewContentModeScaleAspectFit];
     [layerButton addTarget:self action:@selector(showLayers:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:layerButton];
     [self.plugin onMapReady];

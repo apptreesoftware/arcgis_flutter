@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.ImageButton
 import com.esri.arcgisruntime.geometry.GeometryEngine
 import com.esri.arcgisruntime.geometry.Point
 import com.esri.arcgisruntime.geometry.SpatialReferences
@@ -37,7 +38,7 @@ class MapActivity : AppCompatActivity(), LayersDialogFragment.LayersDialogListen
 
         ArcgisFlutterPlugin.onMapReady()
 
-        var layerButton = findViewById<Button>(R.id.mapLayers)
+        var layerButton = findViewById<ImageButton>(R.id.mapLayers)
         layerButton.setOnClickListener { showLayersDialog() }
     }
 

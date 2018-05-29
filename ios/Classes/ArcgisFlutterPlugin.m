@@ -19,12 +19,19 @@
         self.host = host;
         self.channel = channel;
         self.redImageKey = [registar lookupKeyForAsset:@"packages/arcgis_flutter/lib/assets/pin_red.png"];
+        self.layerImageKey = [registar lookupKeyForAsset:@"packages/arcgis_flutter/lib/assets/layers.png"];
     }
     return self;
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"setApiKey" isEqualToString:call.method]) {
+        NSString *licenseStr = (NSString*) call.arguments;
+        if (licenseStr.length == 0) {
+            result(@YES);
+            return;
+        }
+        [AGSArcGISRuntimeEnvironment setLicenseKey:licenseStr error:nil];
         result(@YES);
     } else if ([@"show" isEqualToString:call.method]) {
         NSDictionary *args = call.arguments;
