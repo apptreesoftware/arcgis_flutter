@@ -2,6 +2,7 @@ package com.apptreesoftware.arcgisflutter
 
 import android.app.Activity
 import android.content.Intent
+import com.esri.arcgisruntime.ArcGISRuntimeEnvironment
 import com.esri.arcgisruntime.geometry.Point
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -43,7 +44,14 @@ class ArcgisFlutterPlugin(val activity: Activity) : MethodCallHandler {
 
   override fun onMethodCall(call: MethodCall, result: Result): Unit {
     when {
-      call.method == "setApiKey" -> result.success(false)
+      call.method == "setApiKey" -> {
+        val licenseStr = call.arguments as String
+        if (licenseStr.isEmpty()) {
+          result.success(true)
+        }
+        ArcGISRuntimeEnvironment.setLicense(licenseStr)
+        result.success(true)
+      }
       call.method == "show" -> {
         val mapOptions = call.argument<Map<String, Any>>("mapOptions")
         toolbarActions = getToolbarActions(call.argument<List<Map<String, Any>>>("actions"))
